@@ -15,5 +15,5 @@
 
 module.exports = (robot) ->
 
-  robot.hear /(?=.*\bfuck you\b)(?=.*\botterbot\b).+/i, (msg) ->
-    msg.reply 'suck my :eggplant:!'
+  robot.hear /^aw yiss/i, (msg) ->
+    msg.reply 'http://i.imgur.com/Y6qt76h.png'
