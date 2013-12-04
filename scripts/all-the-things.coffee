@@ -15,6 +15,6 @@
 
 module.exports = (robot) ->
 
-  robot.hear /^all the \b\!/i, (msg) ->
+  robot.hear /^all the \w*\!/i, (msg) ->
     msg.reply 'ALL OF THEM!'
     msg.reply 'http://i.imgur.com/JlRe066.jpg'
