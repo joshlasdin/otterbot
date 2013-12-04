@@ -15,5 +15,5 @@
 
 module.exports = (robot) ->
 
-  robot.hear /^\/nope/i, (msg) ->
+  robot.hear /^\/nope|:\-1:/i, (msg) ->
     msg.send 'http://i.imgur.com/ypnxhIk.gif'
