@@ -115,5 +115,5 @@ dances = [
 
 module.exports = (robot) ->
 
-  robot.respond /^dance\!$/, (msg) ->
+  robot.hear /^dance\!$/i, (msg) ->
     msg.send msg.random dances
