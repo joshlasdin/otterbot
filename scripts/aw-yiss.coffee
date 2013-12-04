@@ -16,4 +16,4 @@
 module.exports = (robot) ->
 
   robot.hear /^aw yiss/i, (msg) ->
-    msg.reply 'http://i.imgur.com/Y6qt76h.png'
+    msg.send 'http://i.imgur.com/Y6qt76h.png'
