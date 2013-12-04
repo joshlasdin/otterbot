@@ -34,5 +34,4 @@ twerks = [
 module.exports = (robot) ->
 
   robot.hear /^shake that ass\!$/i, (msg) ->
-    # msg.send msg.random twerks
     msg.reply 'Sorry, that command has been discontinued (NSFW).'
