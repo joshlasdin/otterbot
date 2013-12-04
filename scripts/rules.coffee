@@ -8,5 +8,5 @@
 #   DON'T DELETE THIS SCRIPT! ALL ROBAWTS MUST KNOW THE RULES
 
 module.exports = (robot) ->
-  robot.respond /^rules/i, (msg) ->
+  robot.hear /rules$/i, (msg) ->
     msg.reply 'There\'s only one rule here: NO HOLDS BARRED.'
