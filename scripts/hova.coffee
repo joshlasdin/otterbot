@@ -25,5 +25,5 @@ hovas = [
 
 module.exports = (robot) ->
 
-  robot.hear /\:raised_hands\:|hova/i, (msg) ->
+  robot.hear /^\:raised_hands\:|hova$/i, (msg) ->
     msg.send msg.random hovas
