@@ -15,5 +15,5 @@
 
 module.exports = (robot) ->
 
-  robot.respond /fuck you/i, (msg) ->
+  robot.respond /(?=.*fuck you)(?=.*otterbot)/i, (msg) ->
     msg.reply 'suck my :eggplant:!'
