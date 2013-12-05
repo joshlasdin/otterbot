@@ -38,7 +38,7 @@ module.exports = (robot) ->
   robot.hear /^\/laugh$/i, (msg) ->
     msg.send 'http://i.imgur.com/3BfVSJe.gif'
 
-  robot.hear /^\/peas$/i, (msg) ->
+  robot.hear /^\/peace$/i, (msg) ->
     msg.send 'http://i.imgur.com/yw3nbR3.gif'
 
   robot.hear /^\/poo$/i, (msg) ->
