@@ -10,11 +10,5 @@
     "lodash": "^2.4.1",
     "forever": "^0.11.1",
     "lastfmapi": "0.0.5"
-  },
-  "devDependencies": {
-    "grunt-heroku-deploy": "~0.1.1",
-    "load-grunt-config": "~0.12.0",
-    "time-grunt": "~0.4.0",
-    "grunt": "~0.4.5"
   }
 }
