@@ -15,9 +15,5 @@ module.exports = {
         token: 'f83992aec68fafaeddeb558045043618',
         session_key: '3ea7156785d20a9bbb9e288948419668',
         url: 'http://www.last.fm/user/IndieAndSuch'
-    },
-    heroku: {
-        app: 'ias-otterbot',
-        relic_key: '612cfb81a621955f9af039edfacbeb1933b6671c'
     }
 };

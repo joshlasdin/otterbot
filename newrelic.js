@@ -1,8 +1,6 @@
-var Config = require('Config');
-
 exports.config = {
-    app_name : [Config.heroku.app],
-    license_key : Config.heroku.relic_key,
+    app_name : ['ias-otterbot'],
+    license_key : '612cfb81a621955f9af039edfacbeb1933b6671c',
     logging : {
         level : 'info'
     }
