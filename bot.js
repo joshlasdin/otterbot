@@ -1,14 +1,30 @@
 var _ = require('lodash'),
+    fs = require('fs'),
     PlugAPI = require('plugapi'),
-    Config = require('./Config');
+    Config = require('./Config'),
+    LastFmService = require('./services/LastFm');
     
-// Provide Auth
-var otterbot = new PlugAPI(Config.auth);
-
 // Extend custom methods in
 _.extend(PlugAPI.prototype, {
     ias_connect: function () {
         this.connect(Config.room);
+    },
+
+    loadCommands: function () {
+        var self = this;
+
+        fs.readdirSync('./commands').forEach(function (file) {
+            var name = file.replace('.js', '');
+            self.commands[name] = require('./commands/' + file);
+            self.commands[name].init();
+            self.log('Loaded command: ' + name);
+        });
+
+        self.log('Successfully loaded ' + _.keys(self.commands).length + ' commands.');
+    },
+
+    loadServices: function () {
+        this.setService('lastfm', new LastFmService(Config.lastfm));
     },
     
     chatSingle: function (message) {
@@ -26,7 +42,32 @@ _.extend(PlugAPI.prototype, {
                 self.chatSingle(_.template(message, data));
             }, 250 * n);
         });
+    },
+
+    _bindReconnect: function () {
+        var self = this;
+        self.on('close', function () { self.ias_connect(); });
+        self.on('error', function () { self.ias_connect(); });
+    },
+
+    setService: function (name, service) {
+        this.services[name] = service;
+    },
+
+    getService: function (name) {
+        return this.services[name];
+    },
+
+    start: function () {
+        this.commands = {};
+        this.services = {};
+
+        this.loadServices();
+        this.loadCommands();
+        this.ias_connect();
+
+        this._bindReconnect();
     }
 });
 
-module.exports = otterbot;
+module.exports = new PlugAPI(Config.auth);

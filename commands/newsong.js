@@ -1,16 +1,9 @@
 var _ = require('lodash'),
     otterbot = require('../bot'),
-    Config = require('../Config'),
-    LastFm = require('../services/LastFm');
+    Config = require('../Config');
     
 exports.init = function () {
-    var lastfm = new LastFm(Config.lastfm);
-    
-    /*
-    lastfm.getSession(function (response) {
-        console.log(response); 
-    });
-    */
+    var lastfm = otterbot.getService('lastfm');
     
     // When a new song is played...
     otterbot.on('djAdvance', function(data) {
@@ -22,10 +15,15 @@ exports.init = function () {
         _.delay(function () {
             if (otterbot.getMedia() === song) {
                 otterbot.log(_.template('"<%= title %>" still playing, scrobbling to last.fm.', song));
-                lastfm.scrobble(song, time, function () {
-                    otterbot.log(_.template('Successfully scrobbled "<%= title %>"', song));
+                lastfm.scrobble(song, time, function (err) {
+                    if (err) {
+                        otterbot.log('Last.fm returned an error:');
+                        otterbot.log(err);
+                    } else {
+                        otterbot.log(_.template('Last.fm successfully scrobbled: <%= title %>', song));
+                    }
                 });
             }
-        }, /*30000*/1);
+        }, 30000);
     });
-}
+};
