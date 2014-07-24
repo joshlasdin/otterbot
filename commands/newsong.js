@@ -1,6 +1,5 @@
 var _ = require('lodash'),
-    otterbot = require('../bot'),
-    Config = require('../Config');
+    otterbot = require('../bot');
     
 exports.init = function () {
     var lastfm = otterbot.getService('lastfm');
@@ -17,10 +16,10 @@ exports.init = function () {
                 otterbot.log(_.template('"<%= title %>" still playing, scrobbling to last.fm.', song));
                 lastfm.scrobble(song, time, function (err) {
                     if (err) {
-                        otterbot.log('Last.fm returned an error:');
+                        otterbot.log('"<%= title %>" Failed to scrobble error:');
                         otterbot.log(err);
                     } else {
-                        otterbot.log(_.template('Last.fm successfully scrobbled: <%= title %>', song));
+                        otterbot.log(_.template('"<%= title %>" successfully scrobbled.', song));
                     }
                 });
             }
