@@ -1,7 +1,7 @@
 var _ = require('lodash'),
     fs = require('fs'),
     PlugAPI = require('plugapi'),
-    Config = require('Config'),
+    Config = require('./Config'),
     LastFmService = require('./services/LastFm');
     
 // Extend custom methods in
