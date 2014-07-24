@@ -1,1 +1,1 @@
-bot: node run.js
+web: node run.js
