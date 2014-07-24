@@ -1,5 +1,3 @@
-require('newrelic');
-
 var express = require('express'),
     otterbot = require('./bot');
 
