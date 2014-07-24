@@ -634,5 +634,10 @@ module.exports = [
         trigger: '.wink',
         response: 'http://i.imgur.com/8vGbUYT.gif',
         match: 'exact'
+    },
+    {
+        trigger: ':taffy:',
+        response: 'http://gifs.gifburger.com/60-mayor-adam-west-chews-taffy.gif',
+        match: 'contains'
     }
 ];
