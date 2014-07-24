@@ -8,7 +8,8 @@
   "dependencies": {
     "plugapi": "^2.3.0",
     "lodash": "^2.4.1",
-    "forever": "^0.11.1",
-    "lastfmapi": "0.0.5"
+    "lastfmapi": "0.0.5",
+    "express": "~4.6.1",
+    "newrelic": "~1.8.1"
   }
 }
