@@ -1,35 +1,17 @@
 {
-  "name": "hosted-hubot",
-  "version": "2.6.3",
-
-  "author": "GitHub Inc.",
-
-  "keywords": [
-    "github",
-    "hubot",
-    "campfire",
-    "bot"
-  ],
-
-  "description": "A simple helpful robot for your Company",
-
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/github/hubot/raw/master/LICENSE"
-  }],
-
-  "repository" : {
-    "type": "git",
-    "url": "https://github.com/github/hubot.git"
-  },
-
+  "name": "otterbot",
+  "version": "3.0.0",
+  "description": "Indie and Such Chat Bot v3 (for plug.dj)",
+  "main": "run.js",
+  "repository": "",
+  "author": "Josh Lasdin <joshlasdindesign@gmail.com>",
   "dependencies": {
-    "hubot":         ">= 2.6.0 < 3.0.0",
-    "hubot-scripts": ">= 2.5.0 < 3.0.0"
-  },
-
-  "engines": {
-    "node": ">= 0.8.x",
-    "npm":  ">= 1.1.x"
+    "plugapi": "^2.3.0",
+    "lodash": "^2.4.1",
+    "forever": "^0.11.1",
+    "request": "^2.37.0",
+    "xml2js": "^0.4.4",
+    "MD5": "^1.2.1",
+    "simple-lastfm": "https://github.com/joshlasdin/simple-lastfm.git"
   }
 }
