@@ -107,7 +107,8 @@ module.exports = [
             'http://i.imgur.com/xOEZoY5.gif',
             'http://i.imgur.com/U64ftJ6.gif',
             'http://i.imgur.com/mR8KEcd.jpg',
-            'http://i.imgur.com/nwclf5t.gif'
+            'http://i.imgur.com/nwclf5t.gif',
+            '♪┏(・o･)┛♪┗ ( ･o･) ┓♪'
         ],
         match: 'exact',
         pickRandom: true
@@ -161,7 +162,8 @@ module.exports = [
             'http://i.imgur.com/cettrIp.gif',
             'http://i.imgur.com/5iaJitu.gif',
             'http://i.imgur.com/UxWiKN3.gif',
-            'http://i.imgur.com/eSvuEwc.gif'
+            'http://i.imgur.com/eSvuEwc.gif',
+            'http://24.media.tumblr.com/tumblr_lxnlyl7kpu1qfvairo1_r1_500.gif'
         ],
         match: 'contains',
         pickRandom: true
@@ -175,7 +177,7 @@ module.exports = [
         pickRandom: true 
     },
     {
-        trigger: ['/csb', 'cool story, bro'],
+        trigger: ['.csb', 'cool story, bro', 'cool story bro'],
         response: [
             'http://i.imgur.com/DPJzZ.gif',
             'http://i.imgur.com/XrxMc.gif',
@@ -526,8 +528,14 @@ module.exports = [
     },
     {
         trigger: '.nope',
-        response: 'http://i.imgur.com/ypnxhIk.gif',
-        match: 'exact'
+        response: [
+            'http://i.imgur.com/ypnxhIk.gif',
+            'http://24.media.tumblr.com/50681a805561cd8fd0e0391a9de24467/tumblr_mfrreniB6Q1rlycfyo1_500.gif',
+            'http://media.tumblr.com/ae722ac8401091a7f6255c8a915671dd/tumblr_inline_mf9l4nOXtc1qi2rev.gif',
+            'http://25.media.tumblr.com/64f44df27392c86b279ff35e94ff38eb/tumblr_mwz8e5JJwP1smcbm7o1_500.gif'
+        ],
+        match: 'exact',
+        pickRandom: true
     },
     {
         trigger: 'deal with it',
@@ -633,6 +641,34 @@ module.exports = [
     {
         trigger: '.wink',
         response: 'http://i.imgur.com/8vGbUYT.gif',
+        match: 'exact'
+    },
+    {
+        trigger: ['.seriousface', '.lod'],
+        response: 'ಠ_ಠ',
+        match: 'exact'
+    },
+    {
+        trigger: '.tableflip',
+        response: [
+            '(╯°□°)╯︵ ┻━┻',
+            'http://24.media.tumblr.com/tumblr_m81n03AUOZ1r3ovdbo1_500.gif',
+            'http://media.tumblr.com/tumblr_markspyMCP1r5zzhq.gif',
+            'http://24.media.tumblr.com/tumblr_ltjzb684BC1ql5yr7o1_400.gif',
+            'http://media.tumblr.com/tumblr_m0uqpy4mSz1qjrxbg.gif',
+            'http://media.tumblr.com/tumblr_mdphjpQaXa1rz0x9z.gif'
+        ],
+        match: 'exact',
+        pickRandom: true
+    },
+    {
+        trigger: '.koala',
+        response: 'ʕ •ᴥ•ʔ',
+        match: 'exact'
+    },
+    {
+      trigger: ['.whatever', '.idunno', '.iunno'],
+        response: '¯\\_(ツ)_/¯',
         match: 'exact'
     },
     {
