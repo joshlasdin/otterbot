@@ -9,7 +9,7 @@ exports.init = function () {
         var song = data.media,
             time = new Date(data.mediaStartTime * 1000);
 
-        if (song.title) {
+        if (song) {
             otterbot.log(_.template('"<%= title %>" started playing. Waiting 30 seconds to scrobble it.', song));
 
             _.delay(function () {
