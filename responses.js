@@ -652,6 +652,7 @@ module.exports = [
         trigger: '.tableflip',
         response: [
             '(╯°□°)╯︵ ┻━┻',
+            '(ノಠ益ಠ)ノ彡┻━┻',
             'http://24.media.tumblr.com/tumblr_m81n03AUOZ1r3ovdbo1_500.gif',
             'http://media.tumblr.com/tumblr_markspyMCP1r5zzhq.gif',
             'http://24.media.tumblr.com/tumblr_ltjzb684BC1ql5yr7o1_400.gif',
