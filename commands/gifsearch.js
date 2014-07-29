@@ -15,7 +15,7 @@ exports.init = function () {
 
             request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    if (_.isEmpty(gifs)) {
+                    if (_.isEmpty(body)) {
                         otterbot.chatSingle(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
                     } else {
                         otterbot.chatSingle(_.random(body).url);
