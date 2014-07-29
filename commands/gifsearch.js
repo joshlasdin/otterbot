@@ -16,13 +16,15 @@ exports.init = function () {
             request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (_.isEmpty(body)) {
-                        otterbot.chatSingle(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
+                        //otterbot.chatSingle();
+                        otterbot.log(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
                     } else {
-                        otterbot.chatSingle(_.random(body).url);
+                        //otterbot.chatSingle(_.random(body).url);
+                        otterbot.log(_.random(body));
                     }
                 } else {
                     otterbot.log('Couldn\'t get gifs:');
-                    otterbot.log(error, response);
+                    otterbot.log(body);
                 }
             });
         }
