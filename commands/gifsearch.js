@@ -8,7 +8,8 @@ exports.init = function () {
         var message = chat.message;
 
         if (Helpers.matchString('contains', '.gif ', message)) {
-            var query = encodeURIComponent(message.replace('.gif ', '')),
+            var string = message.replace('.gif ', ''),
+                query = encodeURIComponent(string),
                 url = 'http://wifflegif.com/gifs/search.json?q=' + query;
 
             otterbot.log('Searching for gifs: ' + url);
@@ -16,7 +17,7 @@ exports.init = function () {
             request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (_.isEmpty(body)) {
-                        otterbot.chatSingle(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
+                        otterbot.chatSingle(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: string }));
                     } else {
                         otterbot.chatSingle(body[_.random(body.length - 1)].url);
                     }
