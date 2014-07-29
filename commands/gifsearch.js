@@ -8,7 +8,7 @@ exports.init = function () {
 
         if (Helpers.matchString('contains', '.gif ', message)) {
             var query = encodeURIComponent(message.replace('.gif ', ''));
-            request('http://wifflegif.com/search.json?q=' + query, function (error, response, body) {
+            request('http://wifflegif.com/gifs/search.json?q=' + query, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     otterbot.log('Got some gifs:');
                     otterbot.log(body);
