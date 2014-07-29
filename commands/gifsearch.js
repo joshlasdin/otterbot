@@ -20,7 +20,7 @@ exports.init = function () {
                         otterbot.log(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
                     } else {
                         //otterbot.chatSingle(_.random(body).url);
-                        otterbot.log(body[_.random(body.length)].url);
+                        otterbot.log(body[_.random(body.length - 1)].url);
                     }
                 } else {
                     otterbot.log('Couldn\'t get gifs:');
