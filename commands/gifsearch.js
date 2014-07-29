@@ -15,13 +15,10 @@ exports.init = function () {
 
             request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    otterbot.log('Got some gifs', typeof body);
-
-                    var gifs = JSON.parse(body);
                     if (_.isEmpty(gifs)) {
                         otterbot.chatSingle(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
                     } else {
-                        otterbot.chatSingle(_.random(gifs).url);
+                        otterbot.chatSingle(_.random(body).url);
                     }
                 } else {
                     otterbot.log('Couldn\'t get gifs:');
