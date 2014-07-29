@@ -16,11 +16,9 @@ exports.init = function () {
             request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     if (_.isEmpty(body)) {
-                        //otterbot.chatSingle();
-                        otterbot.log(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
+                        otterbot.chatSingle(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: query }));
                     } else {
-                        //otterbot.chatSingle(_.random(body).url);
-                        otterbot.log(body[_.random(body.length - 1)].url);
+                        otterbot.chatSingle(body[_.random(body.length - 1)].url);
                     }
                 } else {
                     otterbot.log('Couldn\'t get gifs:');
