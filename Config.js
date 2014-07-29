@@ -1,7 +1,8 @@
 module.exports = {
     name: 'otterbot',
     auth: 'u1bhojRkA4FfCI3KFXUBA30UEpI=?_expires=STE0MjEyMDE1NjYKLg==&user_id=Uyc1M2M4ODI5ZTNlMDgzZTA3YzZiY2U4N2EnCnAxCi4=&v=STIKLg==',
-    room: 'indie-and-such',
+    //room: 'indie-and-such',
+    room: 'jersh',
     joinMessage: 'http://i.imgur.com/NaMiw.gif',
     greeting: ':wave: Fancy seeing you here @<%= username %>!',
     rules: 'There is only one rule of IAS: NO HOLDS BARRED.',
