@@ -24,7 +24,7 @@ exports.init = function () {
                         otterbot.chatSingle(gifs[_.random(gifs.length - 1)].url);
                     }
                 } else {
-                    otterbot.log('Couldn\'t get gifs:', response.statusCode);
+                    otterbot.log('Couldn\'t get gifs:');
                     otterbot.log(body);
                 }
             });
