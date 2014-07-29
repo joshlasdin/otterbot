@@ -8,8 +8,12 @@ exports.init = function () {
         var message = chat.message;
 
         if (Helpers.matchString('contains', '.gif ', message)) {
-            var query = encodeURIComponent(message.replace('.gif ', ''));
-            request('http://wifflegif.com/gifs/search.json?q=' + query, function (error, response, body) {
+            var query = encodeURIComponent(message.replace('.gif ', '')),
+                url = 'http://wifflegif.com/gifs/search.json?q=' + query;
+
+            otterbot.log('Searching for gifs: ' + url);
+
+            request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var gifs = JSON.parse(body);
                     if (_.isEmpty(gifs)) {
@@ -19,7 +23,7 @@ exports.init = function () {
                     }
                 } else {
                     otterbot.log('Couldn\'t get gifs:');
-                    otterbot.log(error);
+                    otterbot.log(error, response);
                 }
             });
         }
