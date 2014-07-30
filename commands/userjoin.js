@@ -8,8 +8,8 @@ exports.init = function () {
         var message;
         
         switch (user.username) {
-            case 'jobu':
-                message = _.template('Fuck you, @<%= name %>!', user);
+            case 'Jobu':
+                message = _.template('Fuck you, @<%= username %>!', user);
                 break;
                 
             case 'DrPowerhouseRowe':
