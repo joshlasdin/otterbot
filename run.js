@@ -13,7 +13,5 @@ app.listen(port, function() {
     console.log("Listening on " + port);
 });
 
-console.log('Attempting to start');
-
 // Connect to the room
 otterbot.start();

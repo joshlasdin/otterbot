@@ -1,6 +1,10 @@
 module.exports = {
     name: 'otterbot',
-    auth: 'u1bhojRkA4FfCI3KFXUBA30UEpI=?_expires=STE0MjEyMDE1NjYKLg==&user_id=Uyc1M2M4ODI5ZTNlMDgzZTA3YzZiY2U4N2EnCnAxCi4=&v=STIKLg==',
+    //auth: 'u1bhojRkA4FfCI3KFXUBA30UEpI=?_expires=STE0MjEyMDE1NjYKLg==&user_id=Uyc1M2M4ODI5ZTNlMDgzZTA3YzZiY2U4N2EnCnAxCi4=&v=STIKLg==',
+    auth: {
+        email: 'joshlasdin@me.com',
+        password: 'qwe123thr33'
+    },
     room: 'indie-and-such',
     joinMessage: 'http://i.imgur.com/NaMiw.gif',
     greeting: ':wave: Fancy seeing you here @<%= username %>!',
