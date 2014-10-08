@@ -7,7 +7,7 @@ var _ = require('lodash'),
 // Extend custom methods in
 _.extend(PlugAPI.prototype, {
     log: function () {
-        console.log.apply(console, args);
+        console.log.apply(console, arguments);
     },
 
     ias_connect: function () {
