@@ -12,6 +12,8 @@ var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
     console.log("Listening on " + port);
 });
-    
+
+console.log('Attempting to start');
+
 // Connect to the room
 otterbot.start();
