@@ -5,7 +5,7 @@ exports.init = function () {
     var lastfm = otterbot.getService('lastfm');
     
     // When a new song is played...
-    otterbot.on('djAdvance', function(data) {
+    otterbot.on('advance', function(data) {
         var song = data.media,
             time = new Date(data.mediaStartTime * 1000);
 
