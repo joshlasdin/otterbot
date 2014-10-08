@@ -6,6 +6,10 @@ var _ = require('lodash'),
     
 // Extend custom methods in
 _.extend(PlugAPI.prototype, {
+    log: function () {
+        console.log.apply(console, args);
+    },
+
     ias_connect: function () {
         this.connect(Config.room);
     },
