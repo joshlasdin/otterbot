@@ -6,10 +6,10 @@
   "repository": "",
   "author": "Josh Lasdin <joshlasdindesign@gmail.com>",
   "dependencies": {
-    "plugapi": "^2.3.0",
     "lodash": "^2.4.1",
     "lastfmapi": "0.0.5",
     "express": "~4.6.1",
-    "request": "~2.39.0"
+    "request": "~2.39.0",
+    "plugapi": "git://github.com/plugCubed/plugAPI.git#develop"
   }
 }
