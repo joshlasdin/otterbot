@@ -343,8 +343,8 @@ module.exports = [
     {
         trigger: 'florida',
         response: [
-            'Florida? Fuck Florida.',
-            'http://i.imgur.com/IkC3Jk1.gif'
+          /* 'Florida? Fuck Florida.', */
+          'http://i.imgur.com/IkC3Jk1.gif'
         ],
         match: 'contains',
         pickRandom: false
