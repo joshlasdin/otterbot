@@ -7,9 +7,9 @@ exports.init = function () {
     otterbot.on('userJoin', function (user) {
         var message;
         
-        switch (user.name) {
-            case 'jobu':
-                message = _.template('Fuck you, @<%= name %>!', user);
+        switch (user.username) {
+            case 'Jobu':
+                message = _.template('Fuck you, @<%= username %>!', user);
                 break;
                 
             case 'DrPowerhouseRowe':
