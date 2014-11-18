@@ -343,8 +343,8 @@ module.exports = [
     {
         trigger: 'florida',
         response: [
-            'Florida? Fuck Florida.',
-            'http://i.imgur.com/IkC3Jk1.gif'
+          'Florida? Fuck Florida.',
+          'http://i.imgur.com/IkC3Jk1.gif'
         ],
         match: 'contains',
         pickRandom: false
@@ -665,11 +665,6 @@ module.exports = [
     {
         trigger: '.koala',
         response: 'ʕ •ᴥ•ʔ',
-        match: 'exact'
-    },
-    {
-      trigger: ['.whatever', '.idunno', '.iunno'],
-        response: '¯\\_(ツ)_/¯',
         match: 'exact'
     },
     {
