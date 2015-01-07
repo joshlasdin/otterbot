@@ -6,21 +6,25 @@ var _ = require('lodash'),
 exports.init = function () {
     otterbot.on('userJoin', function (user) {
         var message;
-        
+
         switch (user.username) {
             case 'Jobu':
                 message = _.template('Fuck you, @<%= username %>!', user);
                 break;
-                
+
             case 'DrPowerhouseRowe':
                 message = 'http://gifs.gifburger.com/57-muppets-from-space.gif';
                 break;
-                
+
+            case 'FredJonathan':
+                message = 'https://api.plugcubed.net/proxy/http://i.imgur.com/eb55q5D.png';
+                break;
+
             default:
                 message = _.template(Config.greeting, user);
         }
-        
-        
+
+
         otterbot.chatSingle(message);
     });
 };
