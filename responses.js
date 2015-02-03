@@ -674,7 +674,7 @@ module.exports = [
     },
     {
         trigger: ['.clearit', '.clear'],
-        response: 'http://f.cl.ly/items/370X1E0g0o0Z1y2Y1D2t/Screen%20Shot%202013-12-03%20at%204.15.47%20PM.png',
+        response: 'http://i.imgur.com/nv8ylec.png?clear_it_image',
         match: 'exact'
     },
 ];
