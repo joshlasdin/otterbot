@@ -17,7 +17,11 @@ exports.init = function () {
                 break;
 
             case 'FredJonathan':
-                message = 'https://api.plugcubed.net/proxy/http://i.imgur.com/eb55q5D.png';
+                message = 'http://i.imgur.com/eb55q5D.png';
+                break;
+
+            case 'dklix':
+                message = 'Well hello :eggplant::tongue:';
                 break;
 
             default:
