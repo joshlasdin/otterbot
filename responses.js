@@ -658,6 +658,10 @@ module.exports = [
             'http://24.media.tumblr.com/tumblr_ltjzb684BC1ql5yr7o1_400.gif',
             'http://media.tumblr.com/tumblr_m0uqpy4mSz1qjrxbg.gif',
             'http://media.tumblr.com/tumblr_mdphjpQaXa1rz0x9z.gif'
+            'http://24.media.tumblr.com/08c51149e784b9e3efc617703f77ff67/tumblr_myugxvSY1N1rse905o1_400.gif',
+            'http://24.media.tumblr.com/a5f62049fd656902548a0811e6f917ad/tumblr_mixg2dAWLl1qdlh1io1_400.gif',
+            'http://media.tumblr.com/a59c99cda990a322c93b4ea13b1861da/tumblr_inline_mqhj1iqVts1qz4rgp.gif',
+            'http://i.imgur.com/wYkU5Yn.gif',
         ],
         match: 'exact',
         pickRandom: true
