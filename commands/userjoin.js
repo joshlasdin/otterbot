@@ -24,6 +24,14 @@ exports.init = function () {
                 message = 'Well hello :eggplant::tongue:';
                 break;
 
+            case 'KimmyG':
+                message = 'http://31.media.tumblr.com/33565f3f6c35c3251bd7ce57148188d5/tumblr_mx7bm9GBGx1s5ro12o1_250.gif';
+                break;
+
+            case 'Sparklefrog':
+                message = ':sparkles::frog:'
+                break;
+
             default:
                 message = _.template(Config.greeting, user);
         }
