@@ -19,7 +19,7 @@ exports.init = function () {
                     var gifs = JSON.parse(body);
 
                     if (_.isEmpty(gifs)) {
-                        otterbot.chatSingle(_.template('@<%= name %> Sorry, I couldn\'t find any gifs for "<%= query %>"', { name: chat.from, query: string }));
+                        otterbot.chatSingle(_.template("NAH on the '<%= search %>' gifs", {'search': string}));
                     } else {
                         otterbot.chatSingle(gifs[_.random(gifs.length - 1)].url);
                     }
