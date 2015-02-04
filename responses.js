@@ -672,6 +672,16 @@ module.exports = [
         match: 'exact'
     },
     {
+        trigger: '.token',
+        response: ':high_brightness:',
+        match: 'exact'
+    },
+    {
+        trigger: '.tokens',
+        response: ':high_brightness::high_brightness::high_brightness::high_brightness::high_brightness:',
+        match: 'exact'
+    },
+    {
         trigger: ':taffy:',
         response: 'http://gifs.gifburger.com/60-mayor-adam-west-chews-taffy.gif',
         match: 'contains'
