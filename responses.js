@@ -171,7 +171,7 @@ module.exports = [
     {
         trigger: ['is', 'this','indie'],
         response: [
-            'NO, IT\'S \"AND SUCH\" YOU FUCK FACE THUNDER CUNT'
+            'NO, IT\'S \'AND SUCH\' YOU FUCK FACE THUNDER CUNT'
     ],
         match: 'contains each',
         pickRandom: true 
