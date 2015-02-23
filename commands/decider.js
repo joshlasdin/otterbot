@@ -1,4 +1,5 @@
 var otterbot = require('../bot'),
+    _ = require('lodash'),
     Helpers = require('../Helpers');
 
 /* 
