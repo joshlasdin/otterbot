@@ -17,7 +17,7 @@ exports.init = function () {
                 break;
 
             case 'FredJonathan':
-                message = 'http://i.imgur.com/eb55q5D.png';
+                message = 'Welcome Fred! http://i.imgur.com/eb55q5D.png';
                 break;
 
             case 'dklix':
@@ -25,11 +25,23 @@ exports.init = function () {
                 break;
 
             case 'KimmyG':
-                message = 'http://31.media.tumblr.com/33565f3f6c35c3251bd7ce57148188d5/tumblr_mx7bm9GBGx1s5ro12o1_250.gif';
+                message = 'Welcome Kimmy! http://31.media.tumblr.com/33565f3f6c35c3251bd7ce57148188d5/tumblr_mx7bm9GBGx1s5ro12o1_250.gif';
                 break;
 
             case 'Sparklefrog':
-                message = ':sparkles::frog:'
+                message = 'Hello there :sparkles::frog:'
+                break;
+
+            case 'LCDizzle':
+                message = 'LCDizzle in the hizzle http://25.media.tumblr.com/ebe9cc3901d029c661d5d8baf97923ca/tumblr_mikzhm6k2A1rjyl3wo1_400.gif'
+                break;
+
+            case 'jayteemo':
+                message = 'Welcome J:shirt::m::o2:'
+                break;
+
+            case 'otterbot':
+                message = 'otterbot in the heeeeeeezy'
                 break;
 
             default:
