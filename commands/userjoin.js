@@ -40,6 +40,10 @@ exports.init = function () {
                 message = 'Welcome J:shirt::m::o2:'
                 break;
 
+            case 'Atomies':
+                message = 'Hola Atom-mami http://i.imgur.com/4hh4P2O.png'
+                break;
+
             case 'otterbot':
                 message = 'otterbot in the heeeeeeezy'
                 break;
