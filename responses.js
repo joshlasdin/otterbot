@@ -691,4 +691,15 @@ module.exports = [
         response: 'http://i.imgur.com/nv8ylec.png?clear_it_image',
         match: 'exact'
     },
+    {
+        trigger: ['.we', '.whatever', '.idunno', '.dunno', '.shrug'],
+        response: '¯\\_(ツ)_/¯',
+        match: 'exact'
+    },
+    {
+        trigger: '.kanyeshrug',
+        response: 'http://i.imgur.com/vYgPmI8.gif',
+        match: 'exact'
+    },
+
 ];

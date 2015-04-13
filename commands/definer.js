@@ -21,7 +21,10 @@ exports.init = function () {
                     if (_.isEmpty(results)) {
                         otterbot.chatSingle(_.template("Urban Dictionary doesn't play that '<%= search %>' shit", {'search': string}));
                     } else {
-                        otterbot.chatSingle("DEFINITION: " + results[0]["definition"]);
+                        var chunks = ("DEFINITION: " + de).replace(/(\r\n|\n|\r)/gm," ").match(/.{1,256}/g);
+                        for(var i=0; i<chunks.length; i++) {
+                            otterbot.chatSingle(chunks[i]);
+                        }
                     }
                 } else {
                     otterbot.log('Couldn\'t get a definition:');
