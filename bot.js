@@ -32,14 +32,16 @@ _.extend(PlugAPI.prototype, {
     },
 
     chatSingle: function (message) {
-        var self = this;
-        _.delay(function () {
-            var chunks = message.match(/.{1,225}/g);
-            
-            _.each(chunks, function (chunk) {
+        var self = this,
+            chunks = message.match(/.{1,225}/g);
+
+            self.log('chunks', message, '\n\n', chunks);
+
+        _.each(chunks, function (chunk, i) {
+            _.delay(function () {
                 self.sendChat(message);
-            });
-        }, Config.chatDelay)
+            }, Config.chatDelay * (i + 1));
+        });
     },
 
     chatMultiple: function (messages, data) {
