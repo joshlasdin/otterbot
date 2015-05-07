@@ -41,7 +41,7 @@ exports.init = function () {
                 break;
 
             case 'Atomies':
-                message = 'Hola Atom-mami http://i.imgur.com/4hh4P2O.png'
+                message = 'Hola Atom-mami http://31.media.tumblr.com/a43479b0997b14076b8aa08adde3c8ee/tumblr_mw9tfkGfCl1t1udaco1_250.gif'
                 break;
 
             case 'otterbot':
