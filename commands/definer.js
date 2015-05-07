@@ -16,14 +16,14 @@ exports.init = function () {
 
             request(url, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    var results = JSON.parse(body)["list"];
+                    var results = JSON.parse(body)['list'];
 
                     if (_.isEmpty(results)) {
-                        otterbot.chatSingle(_.template("Urban Dictionary doesn't play that '<%= search %>' shit", {'search': string}));
+                        otterbot.chatSingle(_.template('Urban Dictionary doesn\'t play that "<%= search %>" shit', { search: string }));
                     } else {
-                        var chunks = ("DEFINITION: " + results[0]["definition"]).replace(/(\r\n|\n|\r)/gm," ").match(/.{1,256}/g);
-                        for(var i=0; i<chunks.length; i++) {
-                            otterbot.chatSingle(chunks[i]);
+                        var chunks = ('DEFINITION: ' + results[0]['definition']).replace(/(\r\n|\n|\r)/gm,' ').replace(/\s+/g, ' ').match(/.{1,225}/g);
+                        _.each(chunks, function (chunk)) {
+                            otterbot.chatSingle(chunk);
                         }
                     }
                 } else {
