@@ -21,10 +21,7 @@ exports.init = function () {
                     if (_.isEmpty(results)) {
                         otterbot.chatSingle(_.template('Urban Dictionary doesn\'t play that "<%= search %>" shit', { search: string }));
                     } else {
-                        var chunks = ('DEFINITION: ' + results[0]['definition']).replace(/(\r\n|\n|\r)/gm,' ').replace(/\s+/g, ' ').match(/.{1,225}/g);
-                        _.each(chunks, function (chunk)) {
-                            otterbot.chatSingle(chunk);
-                        }
+                        otterbot.chatSingle(('DEFINITION: ' + results[0]['definition']).replace(/(\r\n|\n|\r)/gm,' ').replace(/\s+/g, ' '));
                     }
                 } else {
                     otterbot.log('Couldn\'t get a definition:');

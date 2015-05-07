@@ -3,7 +3,7 @@ var _ = require('lodash'),
     PlugAPI = require('plugapi'),
     Config = require('./Config'),
     LastFmService = require('./services/LastFm');
-    
+
 // Extend custom methods in
 _.extend(PlugAPI.prototype, {
     log: function () {
@@ -30,17 +30,19 @@ _.extend(PlugAPI.prototype, {
     loadServices: function () {
         this.setService('lastfm', new LastFmService(Config.lastfm));
     },
-    
+
     chatSingle: function (message) {
         var self = this;
         _.delay(function () {
-            self.sendChat(message);
+            _.each(message.match(/.{1,225}/g), function (chunk) {
+                self.sendChat(message);
+            });
         }, Config.chatDelay)
     },
-    
+
     chatMultiple: function (messages, data) {
         var self = this;
-        
+
         _.each(messages, function (message, n) {
             _.delay(function () {
                 self.chatSingle(_.template(message, data));
