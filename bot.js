@@ -34,7 +34,9 @@ _.extend(PlugAPI.prototype, {
     chatSingle: function (message) {
         var self = this;
         _.delay(function () {
-            _.each(message.match(/.{1,225}/g), function (chunk) {
+            var chunks = message.match(/.{1,225}/g);
+            
+            _.each(chunks, function (chunk) {
                 self.sendChat(message);
             });
         }, Config.chatDelay)
