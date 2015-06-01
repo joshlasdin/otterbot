@@ -724,7 +724,7 @@ module.exports = [
         ],
         match: 'exact',
         pickRandom: true
-    }
+    },
     {
         trigger: '.bass',
         response: [
