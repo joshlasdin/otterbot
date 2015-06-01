@@ -75,7 +75,6 @@ module.exports = [
             'http://i.imgur.com/mHG3L.gif',
             'http://i.imgur.com/8qZ9s.gif',
             'http://i.imgur.com/piuVj.gif',
-            'http://i.imgur.com/ZZosK.gif',
             'http://i.imgur.com/bF7Nh.gif',
             'http://i.imgur.com/7e6Fy.gif',
             'http://i.imgur.com/4j28Y.gif',
