@@ -1,4 +1,4 @@
-var Config = require('./Config');
+﻿var Config = require('./Config');
 
 module.exports = [
     /*
@@ -95,7 +95,6 @@ module.exports = [
             'http://i.imgur.com/Bwfnv.gif',
             'http://i.imgur.com/7pe2k.gif',
             'http://i.imgur.com/Nasbc.gif',
-            'http://i.imgur.com/RxX4h.gif',
             'http://i.imgur.com/tNbIq.gif',
             'http://i.imgur.com/Mt39r.gif',
             'http://i.imgur.com/6Kt7E.gif',
