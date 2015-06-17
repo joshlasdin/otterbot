@@ -172,7 +172,7 @@ module.exports = [
             'NO, IT\'S \'AND SUCH\' YOU FUCK FACE THUNDER CUNT'
     ],
         match: 'contains each',
-        pickRandom: true 
+        pickRandom: true
     },
     {
         trigger: ['.csb', 'cool story, bro', 'cool story bro'],
@@ -701,5 +701,39 @@ module.exports = [
         response: 'http://i.imgur.com/vYgPmI8.gif',
         match: 'exact'
     },
-
+    {
+        trigger: '.dafuq',
+        response: 'http://i.imgur.com/LPxntEA.png',
+        match: 'exact'
+    },
+    {
+        trigger: '.babykimmy',
+        response: [
+          'http://i.imgur.com/yabXATp.png',
+          'http://i.imgur.com/nlJnUHn.png'
+        ],
+        match: 'exact',
+        pickRandom: true
+    },
+    {
+        trigger: '.allthefucks',
+        response: [
+          'http://i.imgur.com/nlJnUHn.png',
+          'http://media.tumblr.com/34f31f98365fd8564f93febc4aa94feb/tumblr_inline_mvq6igVKK41r023dt.gif',
+          'http://i.imgur.com/ZGxf0Ai.gif',
+          'http://31.media.tumblr.com/93b7d5edd2f8856246145f6d36ef4519/tumblr_n1pvytOyDy1tto8hvo1_400.gif'
+        ],
+        match: 'exact',
+        pickRandom: true
+    },
+    {
+        trigger: '.bass',
+        response: [
+          'http://33.media.tumblr.com/e9c67539cecece42a6bf150e0cd27e31/tumblr_nc32kbX46V1sodo64o1_250.gif',
+          'http://24.media.tumblr.com/c667ea5ba439092fde47c97c3631e1b6/tumblr_mhxh19gv9X1s4ms7ro1_250.gif',
+          'http://i.imgur.com/IKZbr.gif'
+        ],
+        match: 'exact',
+        pickRandom: true
+    },
 ];
