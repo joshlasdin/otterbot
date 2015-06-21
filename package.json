@@ -21,8 +21,7 @@
     "sinon": "~1.15.3",
     "sinon-chai": "~2.8.0",
     "grunt-contrib-clean": "~0.6.0",
-    "coveralls": "~2.11.2",
-    "coveralls.io": "~2.1.0"
+    "coveralls": "~2.11.2"
   },
   "scripts": {
     "test": "grunt test"
