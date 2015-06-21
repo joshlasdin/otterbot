@@ -10,5 +10,6 @@ module.exports = new Confidence.Store({
     rules: 'There is only one rule of IAS: NO HOLDS BARRED.',
     what_to_play: 'http://www.last.fm/user/IndieAndSuch',
     chat_delay: 1000,
-    admin: 'jersh'
+    admin: 'jersh',
+    version: '5.0'
 });
