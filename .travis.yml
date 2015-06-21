@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - stable
-before_install: "npm install -g grunt-cli"
-after_script: "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+- stable
+before_install: npm install -g grunt-cli
+after_script: cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+deploy:
+  provider: heroku
+  api_key:
+    secure: HmmxUqWgB7Q5FP1YRwtBVWktva/zuP98qxBulZQDAbzANgt7Y+k5SZxkSX3w2P002R4cyUeQHT/Lmy1R4HbTanPWIeEqXpzUVZUuFs5BQAVAJsJPPop+fJ024ScQ9z+KKrWK8maJ71xQ7HpTCQoCh0rkqGNTjh5fSlEPB9rT4XP+Y80kpiTbrAwFh6w0GY4Wzmy5IdX22pdHGjSi89GnH0ZcP01dk1u5HEl80IX4Zmu60LTeXAeX+iXRe6HgOgXQ/d0ZKTQdb2HFhC1a2d4I1PFpD+GlXJNGxdHwMXZ488mwm1nug/8lvOqMfM6NRwef53/GKqoO+SK7SCjped5R/VizYkDJHqIb6+YbjSq0VqnEeggCb3xtZa9QgDzOZE2yROjAwrVVG7ErcTm9laydshosdYP4Rs6y4ITtzocMVp6/r/KXJKfKPiI21VXqC27i/wDbqjBIyK32jRp2AqskIS8rsTqCNtQRh7tyRVOd6Z18M+d3FVO1HwqydAvMc5muZVoanGT4iHGjitdtBiGnAwVK1P1C00rRHFsJt+nTcfaLslHOFXKrUyAiJ9uB9Xf9Pf8DHxWEURoPZOShatc9rUn9GLAnc9zqslpBZ/QWyNKi9aIJAPargEpngOjtTdzYxK5GQyX+8qUpixyvuGKxZnQTIrNb9aKCZd0BJKpC8x0=
+  app: ias-otterbot
+  on:
+    repo: joshlasdin/otterbot
