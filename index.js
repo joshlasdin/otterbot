@@ -2,7 +2,7 @@
 
 var app = require('express')(),
     port = +(process.env.PORT || 5000),
-    otterbot = require('bot/bot');
+    otterbot = require('./bot/bot');
 
 // Set up webserver for pinging
 app.get('/', function(req, res) { res.send('Hello World!'); });
