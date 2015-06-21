@@ -1,4 +1,4 @@
-﻿var Config = require('./Config');
+﻿var config = require('./config');
 
 module.exports = [
     /*
@@ -359,12 +359,12 @@ module.exports = [
     },
     {
         trigger: ['rules', '.rules'],
-        response: '@<%= from %>, ' + Config.rules,
+        response: '@<%= from %>, ' + config.get('/rules'),
         match: 'exact'
     },
     {
         trigger: '.whattoplay',
-        response: Config.lastfm.url,
+        response: config.get('/what_to_play'),
         match: 'exact'
     },
     {
@@ -378,8 +378,8 @@ module.exports = [
         match: 'exact'
     },
     {
-        trigger: '@' + Config.name + ' who\'s your daddy?',
-        response: '@' + Config.admin + ' is!',
+        trigger: '@' + config.get('name') + ' who\'s your daddy?',
+        response: '@' + config.get('admin') + ' is!',
         match: 'exact'
     },
     {

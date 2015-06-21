@@ -1,7 +1,7 @@
 var _ = require('lodash'),
     fs = require('fs'),
     PlugAPI = require('plugapi'),
-    Config = require('./Config'),
+    config = require('./config'),
     LastFmService = require('./services/LastFm');
 
 // Extend custom methods in
@@ -10,14 +10,12 @@ _.extend(PlugAPI.prototype, {
         console.log.apply(console, arguments);
     },
 
-    ias_connect: function () {
-        this.connect(Config.room);
-    },
-
     loadCommands: function () {
         var self = this;
 
-        fs.readdirSync('./commands').forEach(function (file) {
+        self.commands = self.commands || {};
+
+        fs.readdirSync('./bot/commands').forEach(function (file) {
             var name = file.replace('.js', '');
             self.commands[name] = require('./commands/' + file);
             self.commands[name].init();
@@ -28,15 +26,26 @@ _.extend(PlugAPI.prototype, {
     },
 
     loadServices: function () {
-        this.setService('lastfm', new LastFmService(Config.lastfm));
+        this.services = this.services || {};
+
+        this.setService('lastfm', new LastFmService({
+            username: process.env.lastfm_username,
+            api_key: process.env.lastfm_api_key,
+            secret: process.env.lastfm_secret,
+            token: process.env.lastfm_token,
+            session_key: process.env.session_key
+        }));
     },
 
     chatSingle: function (message) {
         var self = this;
 
+        console.log('chatting single', message);
+
         _.delay(function () {
-            _.each(message.match(/.{1,225}/g), self.sendChat);
-        }, Config.chatDelay);
+            var chunks = message.match(/.{1,225}/g);
+            _.each(chunks, self.sendChat);
+        }, config.get('/chat_delay'));
     },
 
     chatMultiple: function (messages, data) {
@@ -49,12 +58,6 @@ _.extend(PlugAPI.prototype, {
         });
     },
 
-    _bindReconnect: function () {
-        var self = this;
-        self.on('close', function () { self.ias_connect(); });
-        self.on('error', function () { self.ias_connect(); });
-    },
-
     setService: function (name, service) {
         this.services[name] = service;
     },
@@ -63,16 +66,27 @@ _.extend(PlugAPI.prototype, {
         return this.services[name];
     },
 
-    start: function () {
-        this.commands = {};
-        this.services = {};
+    connectToRoom: function () {
+        this.connect(config.get('/room'));
+    },
 
+    start: function () {
+        var self = this;
+
+        // Load up the good stuff
         this.loadServices();
         this.loadCommands();
-        this.ias_connect();
 
-        this._bindReconnect();
+        // Connect to the room
+        this.connectToRoom();
+
+        // Attempt to reconnect on shutdown/error
+        this.on('close', function () { self.connectToRoom(); });
+        this.on('error', function () { self.connectToRoom(); });
     }
 });
 
-module.exports = new PlugAPI(Config.auth);
+module.exports = new PlugAPI({
+    email: process.env.auth_email,
+    password: process.env.auth_password
+});
