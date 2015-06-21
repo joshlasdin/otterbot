@@ -1,4 +1,4 @@
-var Config = require('./Config');
+﻿var Config = require('./Config');
 
 module.exports = [
     /*
@@ -95,7 +95,6 @@ module.exports = [
             'http://i.imgur.com/Bwfnv.gif',
             'http://i.imgur.com/7pe2k.gif',
             'http://i.imgur.com/Nasbc.gif',
-            'http://i.imgur.com/RxX4h.gif',
             'http://i.imgur.com/tNbIq.gif',
             'http://i.imgur.com/Mt39r.gif',
             'http://i.imgur.com/6Kt7E.gif',
@@ -436,9 +435,9 @@ module.exports = [
             'http://i.imgur.com/Br2oMup.jpg',
             'http://i.imgur.com/TvMwavi.jpg',
             'http://i.imgur.com/P3Pzr9V.jpg',
-            'http://i.imgur.com/4U52ot5.jpg?1',
-            'http://i.imgur.com/eZ048mN.jpg?1',
-            'http://i.imgur.com/yGyI850.jpg?1',
+            'http://i.imgur.com/4U52ot5.jpg',
+            'http://i.imgur.com/eZ048mN.jpg',
+            'http://i.imgur.com/yGyI850.jpg',
             'http://i.imgur.com/qZtoRkF.jpg',
             'http://i.imgur.com/M5kF5XM.jpg',
             'http://i.imgur.com/UO1pS5L.jpg',
@@ -458,7 +457,9 @@ module.exports = [
             'http://i.imgur.com/uvs0LWi.jpg',
             'http://i.imgur.com/FzNLFAg.jpg',
             'http://i.imgur.com/G0BiEIu.jpg',
-            'http://i.imgur.com/yC2Tbt8.jpg'
+            'http://i.imgur.com/yC2Tbt8.jpg',
+			'http://i.imgur.com/x2swV8A.jpg',
+			'http://i.imgur.com/34sW9qa.jpg'			
         ],
         pickRandom: true,
         match: 'exact'
