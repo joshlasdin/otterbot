@@ -18,10 +18,10 @@ module.exports = function(grunt) {
                     coverage:true,
                     root: 'bot',
                     check: {
-                        lines: 95,
-                        statements: 95,
-                        functions: 95,
-                        branches: 95
+                        statements: 25,
+                        lines: 25,
+                        functions: 25,
+                        branches: 25
                     }
                 }
             }
