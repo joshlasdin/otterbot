@@ -1,6 +1,4 @@
-var _ = require('lodash'),
-    Config = require('./Config'),
-    otterbot = require('./bot');
+var _ = require('lodash');
 
 module.exports = {
     matchString: function (type, pattern, str) {
