@@ -26,14 +26,14 @@ _.extend(PlugAPI.prototype, {
     },
 
     loadServices: function () {
-        return this.services = this.services || {};
+        this.services = this.services || {};
 
         this.setService('lastfm', new LastFmService({
             username: process.env.lastfm_username,
             api_key: process.env.lastfm_api_key,
             secret: process.env.lastfm_secret,
             token: process.env.lastfm_token,
-            session_key: process.env.session_key
+            session_key: process.env.lastfm_session_key
         }));
     },
 
