@@ -26,7 +26,7 @@ _.extend(PlugAPI.prototype, {
     },
 
     loadServices: function () {
-        this.services = this.services || {};
+        return this.services = this.services || {};
 
         this.setService('lastfm', new LastFmService({
             username: process.env.lastfm_username,
