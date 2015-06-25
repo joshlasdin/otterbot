@@ -37,17 +37,5 @@ module.exports = {
         }
         
         return match;
-    },
-    
-    encodeUTF: function(s) {
-        return unescape(encodeURIComponent(s));
-    },
-    
-    decodeUTF: function(s) {
-        return decodeURIComponent(escape(s));
-    },
-    
-    getUnixTime: function() {
-        return Math.round(+new Date()/1000);
     }
 };

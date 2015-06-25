@@ -1,31 +1,30 @@
-var otterbot = require('../bot'),
-    Helpers = require('../Helpers'),
+var _ = require('lodash'),
     request = require('request'),
-    _ = require('lodash');
+    Helpers = require('../Helpers'),
+    otterbot = require('../bot');
 
 exports.init = function () {
     otterbot.on('chat', function (chat) {
-        var message = chat.message;
+        var message = chat.message,
+            url = 'http://wifflegif.com/gifs/search.json?q=';
 
         if (Helpers.matchString('contains', '.gif ', message)) {
-            var string = message.replace('.gif ', ''),
-                query = encodeURIComponent(string),
-                url = 'http://wifflegif.com/gifs/search.json?q=' + query;
+            message = message.replace('.gif ', '');
+            url += encodeURIComponent(message);
 
-            otterbot.log('Searching for gifs: ' + url);
+            otterbot.log('Searching for gifs: ' + message);
 
-            request(url, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
+            request(url, function (err, res, body) {
+                if (!err && res.statusCode == 200) {
                     var gifs = JSON.parse(body);
 
                     if (_.isEmpty(gifs)) {
-                        otterbot.chatSingle(_.template("NAH on the '<%= search %>' gifs", {'search': string}));
+                        otterbot.chatSingle(_.template("NAH on the '<%= search %>' gifs", { search: message }));
                     } else {
                         otterbot.chatSingle(gifs[_.random(gifs.length - 1)].url);
                     }
                 } else {
-                    otterbot.log('Couldn\'t get gifs:');
-                    otterbot.log(body);
+                    otterbot.log('Couldn\'t get gifs:', body);
                 }
             });
         }

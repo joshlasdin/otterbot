@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                     require: ['test/tests/setup.js'],
                     mask: '**/*.spec.js',
                     coverageFolder: 'test/coverage',
-                    reportFormats: ['text-summary','lcovonly'],
+                    reportFormats: ['text','lcovonly'],
                     reporter: 'spec',
                     coverage:true,
                     root: 'bot',

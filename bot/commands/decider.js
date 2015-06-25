@@ -1,6 +1,6 @@
-var otterbot = require('../bot'),
-    _ = require('lodash'),
-    Helpers = require('../Helpers');
+var _ = require('lodash'),
+    Helpers = require('../Helpers'),
+    otterbot = require('../bot');
 
 /* 
 Randomly make a decision for a user. When a user asks a question in the form:
@@ -8,23 +8,19 @@ Randomly make a decision for a user. When a user asks a question in the form:
 */
 exports.init = function () {
     otterbot.on('chat', function (chat) {
-        var message = chat.message;
+        var message = chat.message, options;
 
         if (Helpers.matchString('contains', 'should i ', message)) {
-            var string = message;
-            // remove the trailing question mark (if there is one)
-            if(string.slice(-1) === "?") { string = string.slice(0, -1) }
-            var options = string.split(" or ");
-            if(options.length > 1) {
-                // get rid of the "should i" in the first option
-                options[0] = options[0].split(" ").slice(2).join(" ")
+            otterbot.log('Making a decision: ' + message);
 
-                var chosen = options[Math.floor(Math.random() * options.length)];
+            // Remove the trailing question mark (if there is one)
+            message = message.replace(/\?$/, '');
 
-                otterbot.log('Making a decision: ' + string);
+            // Split out the options, omitting the leading "Should I"
+            options = message.toLowerCase().replace(/should i /g, '').split(' or ');
 
-                otterbot.chatSingle(_.template("You should '<%= string %>'", {'string': chosen}));
-            }
+            // Pick one of the options at random
+            otterbot.chatSingle(_.template('You should: <%= string %>', { string: options[_.random(options.length - 1)] }));
         }
     });
 };
