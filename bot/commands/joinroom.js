@@ -6,6 +6,6 @@ var _ = require('lodash'),
 exports.init = function () {
     otterbot.on('roomJoin', function (room) {
         otterbot.log(_.template('Connected to: <%= room %>!', { room: config.get('/room') }));
-        otterbot.chatSingle(config.get('/join_message') + '(v ' + config.get('/version') + ')');
+        otterbot.chatMultiple([config.get('/join_message'), 'Otterbot version: ' + config.get('/version')]);
     });
 };
