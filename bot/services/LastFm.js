@@ -16,23 +16,25 @@ _.extend(LastFmService.prototype, {
             this.api.setSessionCredentials(config.username, config.session_key);
         } else {
             this.api.authenticate(config.token, function (err, session) {
-                console.log('Fetched Last.fm session', session);
+                // Have to require this here to avoid circular dependency
+                // issue. The bot has not yet been initialized when the file
+                // is first entered.
+                var otterbot = require('../bot');
+                otterbot.log('Fetched Last.fm session', session);
             });
         }
     },
 
-    scrobble: function (media, logtime, callback) {
+    scrobble: function (media, cb) {
         this.api.track.scrobble({
             'artist': media.author,
             'track': media.title,
             'timestamp' : Math.floor((new Date()).getTime() / 1000) - 300
         }, function (err, scrobbles) {
-            if (_.isFunction(callback)) {
-                callback(err);
-            }
+            /* istanbul ignore else */
+            if (_.isFunction(cb)) { cb(err); }
         });
     }
 });
-
 
 module.exports = LastFmService;

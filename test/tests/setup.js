@@ -18,7 +18,8 @@ util.inherits(FakePlug, EventEmitter);
 // Stub-in plugapi methods
 _.extend(FakePlug.prototype, {
     connect: _.noop,
-    sendChat: _.noop
+    sendChat: _.noop,
+    getMedia: _.noop
 });
 
 // Need to stub out plugapi

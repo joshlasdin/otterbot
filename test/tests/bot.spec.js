@@ -3,6 +3,7 @@
 var _ = require('lodash'),
     sinon = require('sinon'),
     config = require('../../bot/config'),
+    LastFmService = require('../../bot/services/LastFm'),
     bot = require('../../bot/bot');
 
 describe('bot', function () {
@@ -67,8 +68,16 @@ describe('bot', function () {
 
     describe('_loadServices', function () {
         var log;
-        beforeEach(function () { log = sinon.stub(bot, 'log'); });
-        afterEach(function () { log.restore(); });
+
+        beforeEach(function () {
+            log = sinon.stub(bot, 'log');
+            sinon.stub(LastFmService.prototype, 'authenticate');
+        });
+
+        afterEach(function () {
+            log.restore();
+            LastFmService.prototype.authenticate.restore();
+        });
 
         it('should load up all the services', function () {
             bot._loadServices();
