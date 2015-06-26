@@ -364,7 +364,7 @@ module.exports = [
     },
     {
         trigger: '.whattoplay',
-        response: config.get('/what_to_play'),
+        response: config.get('/what'),
         match: 'exact'
     },
     {

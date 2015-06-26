@@ -1,31 +1,31 @@
-var otterbot = require('../bot'),
-    Helpers = require('../Helpers'),
+var _ = require('lodash'),
     request = require('request'),
-    _ = require('lodash');
+    Helpers = require('../Helpers'),
+    otterbot = require('../bot');
 
 exports.init = function () {
     otterbot.on('chat', function (chat) {
-        var message = chat.message;
+        var message = chat.message,
+            url = 'http://api.urbandictionary.com/v0/define?term=',
+            term;
 
         if (Helpers.matchString('contains', '.ud ', message)) {
-            var string = message.replace('.ud ', ''),
-                query = encodeURIComponent(string),
-                url = 'http://api.urbandictionary.com/v0/define?term=' + query;
+            term = message.replace(/\.ud\ /g, '');
+            url += encodeURIComponent(term);
 
-            otterbot.log('Searching for urban dictionary for: ' + url);
+            otterbot.log('Searching for urban dictionary for: ' + term);
 
-            request(url, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                    var results = JSON.parse(body)['list'];
+            request(url, function (err, res, body) {
+                if (!err && res.statusCode == 200) {
+                    var results = JSON.parse(body).list;
 
                     if (_.isEmpty(results)) {
-                        otterbot.chatSingle(_.template('Urban Dictionary doesn\'t play that "<%= search %>" shit', { search: string }));
-                    } else {
-                        otterbot.chatSingle(('DEFINITION: ' + results[0]['definition']).replace(/(\r\n|\n|\r)/gm,' ').replace(/\s+/g, ' '));
+                        return otterbot.chatSingle(_.template('Urban Dictionary doesn\'t play that "<%= search %>" shit', { search: term }));
                     }
+
+                    otterbot.chatSingle('DEFINITION: ' + results[0].definition.replace(/(\r\n|\n|\r)/gm,' ').replace(/\s+/g, ' '));
                 } else {
-                    otterbot.log('Couldn\'t get a definition:');
-                    otterbot.log(body);
+                    otterbot.log('Couldn\'t get a definition:', body);
                 }
             });
         }

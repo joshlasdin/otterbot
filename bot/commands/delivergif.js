@@ -4,11 +4,11 @@ var _ = require('lodash'),
     otterbot = require('../bot'),
     responses = require('../responses');
 
-// Binds chat gif responses loaded from /resonses.js
+// Binds chat gif responses loaded from /responses.js
 exports.init = function () {
     _.each(responses, function (response) {
         otterbot.on('chat', function (chat) {
-            if (chat.raw.un !== config.get('name') && Helpers.matchString(response.match, response.trigger, chat.message)) {
+            if (chat.raw.un !== config.get('/name') && Helpers.matchString(response.match, response.trigger, chat.message)) {
                 if (_.isArray(response.response)) {
                     if (response.pickRandom) {
                         otterbot.chatSingle(_.template(response.response[_.random(response.response.length - 1)], chat));

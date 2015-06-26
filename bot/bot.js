@@ -10,10 +10,8 @@ _.extend(PlugAPI.prototype, {
         console.log.apply(console, arguments);
     },
 
-    loadCommands: function () {
+    _loadCommands: function () {
         var self = this;
-
-        self.commands = self.commands || {};
 
         fs.readdirSync('./bot/commands').forEach(function (file) {
             var name = file.replace('.js', '');
@@ -25,16 +23,14 @@ _.extend(PlugAPI.prototype, {
         self.log('Successfully loaded ' + _.keys(self.commands).length + ' commands.');
     },
 
-    loadServices: function () {
-        this.services = this.services || {};
-
-        this.setService('lastfm', new LastFmService({
+    _loadServices: function () {
+        this.services.lastfm = new LastFmService({
             username: process.env.lastfm_username,
             api_key: process.env.lastfm_api_key,
             secret: process.env.lastfm_secret,
             token: process.env.lastfm_token,
             session_key: process.env.lastfm_session_key
-        }));
+        });
     },
 
     chatSingle: function (message) {
@@ -42,7 +38,7 @@ _.extend(PlugAPI.prototype, {
 
         _.delay(function () {
             var chunks = message.match(/.{1,225}/g);
-            _.each(chunks, self.sendChat);
+            _.each(chunks, function (message) { self.sendChat(message); });
         }, config.get('/chat_delay'));
     },
 
@@ -51,17 +47,9 @@ _.extend(PlugAPI.prototype, {
 
         _.each(messages, function (message, n) {
             _.delay(function () {
-                self.chatSingle(_.template(message, data));
+                self.chatSingle(_.template(message, data || {}));
             }, 250 * n);
         });
-    },
-
-    setService: function (name, service) {
-        this.services[name] = service;
-    },
-
-    getService: function (name) {
-        return this.services[name];
     },
 
     connectToRoom: function () {
@@ -71,9 +59,12 @@ _.extend(PlugAPI.prototype, {
     start: function () {
         var self = this;
 
+        this.services = {};
+        this.commands = {};
+
         // Load up the good stuff
-        this.loadServices();
-        this.loadCommands();
+        this._loadServices();
+        this._loadCommands();
 
         // Connect to the room
         this.connectToRoom();
