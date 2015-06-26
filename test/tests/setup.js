@@ -22,8 +22,28 @@ _.extend(FakePlug.prototype, {
     getMedia: _.noop
 });
 
-// Need to stub out plugapi
+// Stub out plugapi
 requireSubvert.subvert('plugapi', FakePlug);
+
+// Stub out Easypedia
+requireSubvert.subvert('easypedia', function (term, cb) {
+    if (term === 'noresults') {
+        return cb({ text: {} });
+    }
+
+    return cb({
+        text: {
+            First: [
+                { text: 'first line of first section' },
+                { text: 'second line of first section' }
+            ],
+            Second: [
+                { text: 'first line of second section' },
+                { text: 'second line of second section' }
+            ]
+        }
+    });
+});
 
 // Stub out gif responses
 requireSubvert.subvert('../../bot/responses', responseFixture);
