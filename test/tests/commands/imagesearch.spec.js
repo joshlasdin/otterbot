@@ -39,7 +39,7 @@ describe('[Commands] imagesearch', function () {
 
         setTimeout(function () {
             expect(speak).to.have.been.calledOnce;
-            expect(speak.args[0][0]).to.equal(firstUrl);
+            expect([firstUrl, secondUrl]).to.include(speak.args[0][0]);
             done();
         }, 25);
     });

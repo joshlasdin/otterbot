@@ -17,10 +17,11 @@ exports.init = function () {
             request(url, function (err, res, body) {
                 if (!err && res.statusCode == 200) {
                     var images = JSON.parse(body)["responseData"]["results"];
-                    if(images && images[0]) {
-                        otterbot.chatSingle(images[0]["url"]);
-                    } else {
+
+                    if (_.isEmpty(images)) {
                         otterbot.chatSingle(_.template("NAH on the '<%= search %>' pics", { search: message }));
+                    } else {
+                        otterbot.chatSingle(images[_.random(images.length - 1)]["url"]);
                     }
                 } else {
                     otterbot.log('Couldn\'t get images:', body);
