@@ -11,5 +11,5 @@ module.exports = new Confidence.Store({
     what_to_play: 'http://www.last.fm/user/IndieAndSuch',
     chat_delay: 1000,
     admin: 'jersh',
-    version: '5.0'
+    version: '5.1'
 });
