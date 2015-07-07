@@ -94,7 +94,7 @@ describe('bot', function () {
         it('should load up all the commands in the /commands folder', function () {
             bot._loadCommands();
             expect(_.isEmpty(bot.commands)).to.be.false;
-            expect(_.keys(bot.commands)).to.include('decider', 'definer', 'delivergif', 'gifsearch', 'joinroom', 'newsong', 'userjoin', 'wiki');
+            expect(_.keys(bot.commands)).to.include('decider', 'definer', 'delivergif', 'gifsearch', 'imagesearch', 'joinroom', 'newsong', 'userjoin', 'wiki');
         });
     });
 
