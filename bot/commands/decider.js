@@ -21,10 +21,10 @@ exports.init = function () {
 
             if(options.length > 1) {
                 // Pick one of the options at random
-                otterbot.chatSingle(_.template('You should: <%= string %>', { string: options[_.random(options.length - 1)] }));
+                otterbot.chatSingle(_.template('You should: <%= string %>', { string: Helpers.randomElement(options) }));
             } else if(options.length === 1) {
-              var options = ["Yes you should", "No you should not"];
-              otterbot.chatSingle(options[_.random(options.length - 1)])
+                var options = ["Yes you should", "No you should not"];
+                otterbot.chatSingle(Helpers.randomElement(options));
             }
         }
     });

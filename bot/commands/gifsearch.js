@@ -21,7 +21,7 @@ exports.init = function () {
                     if (_.isEmpty(gifs)) {
                         otterbot.chatSingle(_.template("NAH on the '<%= search %>' gifs", { search: message }));
                     } else {
-                        otterbot.chatSingle(gifs[_.random(gifs.length - 1)].url);
+                        otterbot.chatSingle(Helpers.randomElement(gifs).url);
                     }
                 } else {
                     otterbot.log('Couldn\'t get gifs:', body);
