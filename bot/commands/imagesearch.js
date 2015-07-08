@@ -8,8 +8,10 @@ exports.init = function () {
         var message = chat.message,
             url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&safe=active&q=';
 
-        if (Helpers.matchString('contains', '.pic ', message)) {
-            message = message.replace('.pic ', '');
+        if (Helpers.matchString('contains', ['.pic ', '.clearpic '], message)) {
+            var clearit = Helpers.matchString('contains', '.clearpic ', message);
+
+            message = message.replace('.pic ', '').replace('.clearpic ', '');
             url += encodeURIComponent(message);
 
             otterbot.log('Searching for an image: ' + message);
@@ -22,6 +24,10 @@ exports.init = function () {
                         otterbot.chatSingle(_.template("NAH on the '<%= search %>' pics", { search: message }));
                     } else {
                         otterbot.chatSingle(images[_.random(images.length - 1)]["url"]);
+
+                        if(clearit) {
+                            otterbot.chatSingle("http://i.imgur.com/nv8ylec.png?clear_it_image");
+                        }
                     }
                 } else {
                     otterbot.log('Couldn\'t get images:', body);

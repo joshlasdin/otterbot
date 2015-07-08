@@ -44,6 +44,26 @@ describe('[Commands] imagesearch', function () {
         }, 25);
     });
 
+    it('should return an image and then a clear image when .clearpic is used', function (done) {
+        var url = "https://upload.wikimedia.org/wikipedia/commons/3/32/Sir_Ben_Kingsley_by_David_Shankbone.jpg";
+
+        google.reply(200, {
+          "responseData": {
+            "results": [
+              {"url": url}
+            ]}
+        });
+
+        bot.emit('chat', { message: '.clearpic ' + term });
+
+        setTimeout(function () {
+            expect(speak).to.have.been.calledTwice;
+            expect(speak.args[0][0]).to.equal(url);
+            expect(speak.args[1][0]).to.include("clear_it_image");
+            done();
+        }, 25);
+    });
+
     it('should say if there were no available images', function (done) {
         google.reply(200, {
           "responseData": {
@@ -54,7 +74,7 @@ describe('[Commands] imagesearch', function () {
 
         setTimeout(function () {
             expect(speak).to.have.been.calledOnce;
-            expect(speak.args[0][0]).to.contain('NAH on the \'' + term + '\'');
+            expect(speak.args[0][0]).to.equal('NAH on the \'' + term + '\' pics');
             done();
         }, 25);
     });
@@ -66,7 +86,7 @@ describe('[Commands] imagesearch', function () {
 
         setTimeout(function () {
             expect(bot.log).to.have.been.calledTwice;
-            expect(bot.log.args[1][0]).to.contain('Couldn\'t get images:');
+            expect(bot.log.args[1][0]).to.equal('Couldn\'t get images:');
             done();
         }, 25);
     });
