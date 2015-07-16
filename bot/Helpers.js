@@ -37,5 +37,8 @@ module.exports = {
         }
         
         return match;
+    },
+    randomElement: function(array) {
+        return array[_.random(array.length - 1)];
     }
 };

@@ -22,15 +22,31 @@ describe('[Commands] decider', function () {
     });
 
     it('should make a decision for the user', function () {
-        var chat = { message: 'Should I foo faz or should I bar baz buz' };
-        bot.emit('chat', chat);
+        bot.emit('chat', { message: 'Should I foo faz or should I bar baz buz' });
         expect(speak).to.have.been.calledOnce;
         expect(['You should: foo faz', 'You should: bar baz buz']).to.include(speak.args[0][0]);
     });
 
-    it('should only execute when string contains "should I"', function () {
-        var chat = { message: 'foo faz or bar baz buz' };
-        bot.emit('chat', chat);
+    it('should work when there are multiple options', function () {
+        bot.emit('chat', { message: 'Should I foo or bar or buzz or biz' });
+        expect(speak).to.have.been.calledOnce;
+        expect(['You should: foo', 'You should: bar', 'You should: buzz', 'You should: biz']).to.include(speak.args[0][0]);
+    });
+
+    it('should make a yes or no decision when there is just one option', function () {
+        bot.emit('chat', { message: 'Should I punch fred?' });
+        expect(speak).to.have.been.calledOnce;
+        expect(['Yes you should', 'No you should not']).to.include(speak.args[0][0]);
+    });
+
+    it('should not execute on a random string', function () {
+        bot.emit('chat', { message: 'foo faz or bar baz buz' });
         expect(speak).to.not.have.been.called;
     });
+
+    it('should not execute when the word should is used', function () {
+        bot.emit('chat', { message: 'Should fred eat?' });
+        expect(speak).to.not.have.been.called;
+    });
+
 });

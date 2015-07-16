@@ -23,7 +23,7 @@ exports.init = function () {
                     if (_.isEmpty(images)) {
                         otterbot.chatSingle(_.template("NAH on the '<%= search %>' pics", { search: message }));
                     } else {
-                        otterbot.chatSingle(images[_.random(images.length - 1)]["url"]);
+                        otterbot.chatSingle(Helpers.randomElement(images)["url"]);
 
                         if(clearit) {
                             otterbot.chatSingle("http://i.imgur.com/nv8ylec.png?clear_it_image");

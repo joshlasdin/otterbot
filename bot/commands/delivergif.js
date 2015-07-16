@@ -11,7 +11,7 @@ exports.init = function () {
             if (chat.raw.un !== config.get('/name') && Helpers.matchString(response.match, response.trigger, chat.message)) {
                 if (_.isArray(response.response)) {
                     if (response.pickRandom) {
-                        otterbot.chatSingle(_.template(response.response[_.random(response.response.length - 1)], chat));
+                        otterbot.chatSingle(_.template(Helpers.randomElement(response.response), chat));
                     } else {
                         otterbot.chatMultiple(response.response, chat);
                     }
