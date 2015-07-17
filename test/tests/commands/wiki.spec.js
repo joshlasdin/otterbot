@@ -22,12 +22,22 @@ describe('[Commands] wiki', function () {
         bot.log.restore();
     });
 
-    it('should return a wikipedia entry', function (done) {
+    it('should return the first line of the intro section of the wikipedia entry', function (done) {
         bot.emit('chat', { message: '.wiki ' + term });
 
         setTimeout(function () {
             expect(speak).to.have.been.calledOnce;
             expect(speak.args[0][0]).to.include('first line of first section');
+            done();
+        }, 25);
+    });
+
+    it('should skip any lines that dont look like text', function (done) {
+        bot.emit('chat', { message: '.wiki images' });
+
+        setTimeout(function () {
+            expect(speak).to.have.been.calledOnce;
+            expect(speak.args[0][0]).to.include('second line of first section');
             done();
         }, 25);
     });

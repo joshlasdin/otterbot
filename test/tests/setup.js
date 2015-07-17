@@ -29,11 +29,16 @@ requireSubvert.subvert('plugapi', FakePlug);
 requireSubvert.subvert('easypedia', function (term, cb) {
     if (term === 'noresults') {
         return cb({ text: {} });
-    }
-
-    return cb({
-        text: {
-            First: [
+    } else if(term === 'images') {
+      return cb({text: {
+            Intro: [
+                { text: '{{multiple image' },
+                { text: 'second line of first section' }
+            ]
+      }});
+    } else {
+      return cb({text: {
+            Intro: [
                 { text: 'first line of first section' },
                 { text: 'second line of first section' }
             ],
@@ -41,8 +46,8 @@ requireSubvert.subvert('easypedia', function (term, cb) {
                 { text: 'first line of second section' },
                 { text: 'second line of second section' }
             ]
-        }
-    });
+      }});
+    }
 });
 
 // Stub out gif responses
