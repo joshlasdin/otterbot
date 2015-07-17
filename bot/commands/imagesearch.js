@@ -16,19 +16,31 @@ exports.init = function () {
 
             otterbot.log('Searching for an image: ' + message);
 
-            request(url, function (err, res, body) {
-                if (!err && res.statusCode == 200) {
-                    var images = JSON.parse(body)["responseData"]["results"];
+            var fetchImage = function(images) {
+                if(_.isEmpty(images)) {
+                    otterbot.chatSingle(_.template("NAH on the '<%= search %>' pics", { search: message }));
+                    return;
+                }
 
-                    if (_.isEmpty(images)) {
-                        otterbot.chatSingle(_.template("NAH on the '<%= search %>' pics", { search: message }));
-                    } else {
-                        otterbot.chatSingle(Helpers.randomElement(images)["url"]);
+                var image = Helpers.randomElement(images);
+                _.pull(images, image);
+
+                request(image["url"], function (err, res, body) {
+                    if (!err && res.statusCode == 200 && _.contains(res.headers['content-type'], "image/")) {
+                        otterbot.chatSingle(image["url"]);
 
                         if(clearit) {
                             otterbot.chatSingle("http://i.imgur.com/nv8ylec.png?clear_it_image");
                         }
+                    } else {
+                        fetchImage(images);
                     }
+                });
+            };
+
+            request(url, function (err, res, body) {
+                if (!err && res.statusCode == 200) {
+                    fetchImage(JSON.parse(body)["responseData"]["results"]);
                 } else {
                     otterbot.log('Couldn\'t get images:', body);
                 }
