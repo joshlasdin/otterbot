@@ -7,6 +7,10 @@ exports.init = function () {
     otterbot.on('userJoin', function (user) {
         var message;
 
+        if(!user || !user.username) {
+            return;
+        }
+
         /* istanbul ignore next */
         switch (user.username) {
             case 'Jobu':

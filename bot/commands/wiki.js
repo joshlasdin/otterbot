@@ -13,10 +13,16 @@ exports.init = function () {
             otterbot.log('Searching for wikipedia entry: ' + message);
 
             easypedia(message, function (result) {
-                var sections = _.keys(result.text);
-
-                if (sections.length) {
-                    otterbot.chatSingle('From Wikipedia: ' + result.text[sections[0]][0].text);
+                var intro = result.text["Intro"];
+                if (intro && intro.length) {
+                    for (var i=0; i < intro.length; i++) {
+                        var line = intro[i].text;
+                        // skip any lines that look like wikipedia formatting (i.e. not text)
+                        if (line.indexOf("{{") !== 0 && line.indexOf("<") !== 0) {
+                            otterbot.chatSingle('From Wikipedia: ' + line);
+                            break;
+                        }
+                    }
                 } else {
                     otterbot.chatSingle('Sorry, I couldn\'t find anything on "' + message + '".');
                 }

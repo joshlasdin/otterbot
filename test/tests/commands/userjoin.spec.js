@@ -19,4 +19,9 @@ describe('[Commands] userjoin', function () {
         expect(speak).to.have.been.calledOnce;
         expect(speak.args[0][0]).to.equal(_.template(config.get('/greeting'), { username: 'foobar' }));
     });
+
+    it('should not greet anonymous users', function () {
+        bot.emit('userJoin', { username: undefined });
+        expect(speak).to.not.have.been.called;
+    });
 });

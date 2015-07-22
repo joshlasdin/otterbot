@@ -7,13 +7,15 @@ var _ = require('lodash'),
     imagesearch = require('../../../bot/commands/imagesearch');
 
 describe('[Commands] imagesearch', function () {
-    var speak, term, google;
+    var speak, term, google, wiki, collider;
 
     before(function () {
         sinon.stub(bot, 'log');
         imagesearch.init();
         term = 'foo';
         google = nock('http://ajax.googleapis.com').get('/ajax/services/search/images?v=1.0&rsz=8&safe=active&q=' + term);
+        wiki = nock('https://upload.wikimedia.org').defaultReplyHeaders({'Content-Type': 'image/jpg'}).get('/wikipedia/commons/3/32/Sir_Ben_Kingsley_by_David_Shankbone.jpg');
+        collider = nock('http://cdn.collider.com').defaultReplyHeaders({'Content-Type': 'image/jpg'}).get('/wp-content/uploads/Ben-Kingsley-image-1.jpg');
     });
 
     beforeEach(function () { speak = sinon.stub(bot, 'chatSingle'); });
@@ -24,7 +26,7 @@ describe('[Commands] imagesearch', function () {
         bot.log.restore();
     });
 
-    it('should return a the first result from google image search', function (done) {
+    it('should return one of the results from google image search', function (done) {
         var firstUrl = "https://upload.wikimedia.org/wikipedia/commons/3/32/Sir_Ben_Kingsley_by_David_Shankbone.jpg";
         var secondUrl = "http://cdn.collider.com/wp-content/uploads/Ben-Kingsley-image-1.jpg";
         google.reply(200, {
@@ -34,6 +36,9 @@ describe('[Commands] imagesearch', function () {
               {"url": secondUrl}
             ]}
         });
+
+        wiki.reply(200);
+        collider.reply(200);
 
         bot.emit('chat', { message: '.pic ' + term });
 
@@ -54,6 +59,8 @@ describe('[Commands] imagesearch', function () {
             ]}
         });
 
+        wiki.reply(200);
+
         bot.emit('chat', { message: '.clearpic ' + term });
 
         setTimeout(function () {
@@ -70,6 +77,26 @@ describe('[Commands] imagesearch', function () {
             "results": []
           }
         });
+        bot.emit('chat', { message: '.pic ' + term });
+
+        setTimeout(function () {
+            expect(speak).to.have.been.calledOnce;
+            expect(speak.args[0][0]).to.equal('NAH on the \'' + term + '\' pics');
+            done();
+        }, 25);
+    });
+
+    it('should say there are no images when the only image isn\'t a valid url', function (done) {
+        var firstUrl = "https://upload.wikimedia.org/wikipedia/commons/3/32/Sir_Ben_Kingsley_by_David_Shankbone.jpg";
+        google.reply(200, {
+          "responseData": {
+            "results": [
+              {"url": firstUrl},
+            ]}
+        });
+
+        wiki.reply(404);
+
         bot.emit('chat', { message: '.pic ' + term });
 
         setTimeout(function () {
