@@ -10,9 +10,13 @@ exports.init = function () {
 
         if (Helpers.matchString('contains', ['.pic ', '.clearpic '], message)) {
             var clearit = Helpers.matchString('contains', '.clearpic ', message);
+            var animated = Helpers.matchString('contains', ' gif', message);
 
             message = message.replace('.pic ', '').replace('.clearpic ', '');
             url += encodeURIComponent(message);
+            if(animated) {
+                url += "&imgtype=animated";
+            }
 
             otterbot.log('Searching for an image: ' + message);
 
