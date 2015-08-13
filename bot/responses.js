@@ -736,4 +736,9 @@ module.exports = [
         match: 'exact',
         pickRandom: true
     },
+    {
+        trigger: ['.thisguy', '.thisgirl', '.oprah', '.noprah', '.nah'],
+        response: 'http://25.media.tumblr.com/e3760744f2217760914c99d3489d100f/tumblr_mimuporRF41s6sfnro1_400.gif',
+        match: 'exact'
+    },
 ];
