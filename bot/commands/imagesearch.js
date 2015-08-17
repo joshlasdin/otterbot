@@ -10,9 +10,13 @@ exports.init = function () {
 
         if (Helpers.matchString('contains', ['.pic ', '.clearpic '], message)) {
             var clearit = Helpers.matchString('contains', '.clearpic ', message);
+            var animated = Helpers.matchString('contains', ' gif', message);
 
             message = message.replace('.pic ', '').replace('.clearpic ', '');
             url += encodeURIComponent(message);
+            if(animated) {
+                url += "&imgtype=animated";
+            }
 
             otterbot.log('Searching for an image: ' + message);
 
@@ -28,6 +32,7 @@ exports.init = function () {
                 request(image["url"], function (err, res, body) {
                     if (!err && res.statusCode == 200 && _.contains(res.headers['content-type'], "image/")) {
                         otterbot.chatSingle(image["url"]);
+			console.log("Posted image: " + image["url"]);
 
                         if(clearit) {
                             otterbot.chatSingle("http://i.imgur.com/nv8ylec.png?clear_it_image");
