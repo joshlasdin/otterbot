@@ -14,7 +14,7 @@ exports.init = function () {
         /* istanbul ignore next */
         switch (user.username) {
             case 'Jobu':
-                message = _.template('Fuck you, @<%= username %>!', user);
+                message = _.template('Fuck you Terrence! (@<%= username %>)', user);
                 break;
 
             case 'DrPowerhouseRowe':
