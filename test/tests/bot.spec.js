@@ -66,7 +66,7 @@ describe('bot', function () {
         });
     });
 
-    describe('_loadServices', function () {
+    describe.skip('_loadServices', function () {
         var log;
 
         beforeEach(function () {
