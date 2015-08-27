@@ -24,9 +24,6 @@ _.extend(PlugAPI.prototype, {
     },
 
     _loadServices: function () {
-        // Temporarily disabling LastFM scrobbling
-	// Todo: Fix session issue
-	return;
 	this.services.lastfm = new LastFmService({
             username: process.env.lastfm_username,
             api_key: process.env.lastfm_api_key,
