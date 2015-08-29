@@ -134,6 +134,24 @@ module.exports = [
         pickRandom: true
     },
     {
+        trigger: 'rock!',
+        response: [
+            'http://24.media.tumblr.com/4ba113d0c3c7e7af781c622dc735a436/tumblr_mstn5wSfZA1rreer9o1_500.gif',
+            'http://media.tumblr.com/8db6bbfcdad63d157bde328ab7b2647b/tumblr_inline_molrbof4d01qz4rgp.gif',
+            'http://31.media.tumblr.com/da390acf4ed5af13122487ff1fc67660/tumblr_myym9bsNLe1spldnco1_500.gif',
+            'http://31.media.tumblr.com/tumblr_lprihljmDm1qimi3zo1_500.gif',
+            'http://33.media.tumblr.com/841f06513b58468a81bf9153b0863d13/tumblr_n0xkuod0ho1r4xe7co1_400.gif',
+            'http://25.media.tumblr.com/f7f5300730c4251dd5a29c206ec788a7/tumblr_mrtkcwt5AG1sphrggo1_400.gif',
+            'http://24.media.tumblr.com/5a7bd6c101a4c0da21af9d3edf8c4dd7/tumblr_mn6s0kK4Xy1qh1biao1_500.gif',
+            'http://31.media.tumblr.com/6d8329a5ef1e82c387a49448c26bd020/tumblr_mie2zqYlDa1qf5ghpo1_500.gif',
+            'http://25.media.tumblr.com/33b93f5db394612870304ba072edc0a6/tumblr_msgrwdp4XK1shqd9jo1_400.gif',
+            'http://31.media.tumblr.com/tumblr_m3dzebx9VN1rr6rubo1_400.gif',
+            'http://25.media.tumblr.com/tumblr_lqx33wIaB61qeryh7o1_500.gif',
+        ],
+        match: 'exact',
+        pickRandom: true
+    },
+    {
         trigger: 'goon squad!',
         response: 'http://i.imgur.com/VO8Vm.gif',
         match: 'exact'
@@ -458,8 +476,8 @@ module.exports = [
             'http://i.imgur.com/FzNLFAg.jpg',
             'http://i.imgur.com/G0BiEIu.jpg',
             'http://i.imgur.com/yC2Tbt8.jpg',
-			'http://i.imgur.com/x2swV8A.jpg',
-			'http://i.imgur.com/34sW9qa.jpg'			
+            'http://i.imgur.com/x2swV8A.jpg',
+            'http://i.imgur.com/34sW9qa.jpg'
         ],
         pickRandom: true,
         match: 'exact'
@@ -554,7 +572,8 @@ module.exports = [
             'http://i.imgur.com/ONtwt91.gif',
             'http://i.imgur.com/YMrvKn6.gif',
             'http://i.imgur.com/wrl86lO.gif',
-            'http://www.gifti.me/i/BnDgSbW.gif'
+            'http://www.gifti.me/i/BnDgSbW.gif',
+            'http://i.imgur.com/qEa96Gr.jpg',
         ],
         match: 'contains',
         pickRandom: true
@@ -711,6 +730,14 @@ module.exports = [
         response: [
           'http://i.imgur.com/yabXATp.png',
           'http://i.imgur.com/nlJnUHn.png'
+        ],
+        match: 'exact',
+        pickRandom: true
+    },
+    {
+        trigger: '.babynikki',
+        response: [
+          'http://i.imgur.com/vcm8tye.jpg',
         ],
         match: 'exact',
         pickRandom: true
