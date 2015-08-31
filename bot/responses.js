@@ -147,6 +147,8 @@ module.exports = [
             'http://25.media.tumblr.com/33b93f5db394612870304ba072edc0a6/tumblr_msgrwdp4XK1shqd9jo1_400.gif',
             'http://31.media.tumblr.com/tumblr_m3dzebx9VN1rr6rubo1_400.gif',
             'http://25.media.tumblr.com/tumblr_lqx33wIaB61qeryh7o1_500.gif',
+            'https://media.giphy.com/media/JutxTkgfbzyw0/giphy.gif',
+            'https://media.giphy.com/media/m1DzPMNqIm4EM/giphy.gif',
         ],
         match: 'exact',
         pickRandom: true
